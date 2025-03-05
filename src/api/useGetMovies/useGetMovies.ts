@@ -1,23 +1,23 @@
 import axios from 'axios';
-import { Movie } from './useGetMovies.types';
-import { useQuery } from '@tanstack/react-query';
-import { API_URL } from '../../../api';
+import { MoviesResponse } from './useGetMovies.types';
+import { useInfiniteQuery } from '@tanstack/react-query';
+import { BASE_URL, API_KEY } from '../../../api';
 
-const fetchMovies = async () => {
-  const { data } = await axios.get<{ results: Movie[] }>(API_URL);
-  return data.results;
+const fetchMovies = async ({ pageParam = 1 }) => {
+  const { data } = await axios.get<MoviesResponse>(
+    `${BASE_URL}discover/movie?api_key=${API_KEY}&language=pl-PL&sort_by=popularity.desc&page=${pageParam}`
+  );
+  return {
+    results: data.results,
+    nextPage: pageParam < data.total_pages ? pageParam + 1 : null,
+  };
 };
 
 export const useGetMovies = () => {
-  const {
-    data: movies = [],
-    isLoading,
-    isError,
-  } = useQuery({
+  return useInfiniteQuery({
     queryKey: ['movies'],
     queryFn: fetchMovies,
-    staleTime: 1000 * 60 * 5,
+    initialPageParam: 1,
+    getNextPageParam: (lastPage) => lastPage.nextPage,
   });
-
-  return { movies, isLoading, isError };
 };
