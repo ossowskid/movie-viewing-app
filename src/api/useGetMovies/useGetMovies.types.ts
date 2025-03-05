@@ -1,16 +1,23 @@
-export type Movie = {
-  adult: boolean;
-  backdrop_path: string | null;
-  genre_ids: number[];
+export type Movies = {
   id: number;
-  original_language: string;
-  original_title: string;
-  overview: string;
-  popularity: number;
-  poster_path: string | null;
-  release_date: string;
   title: string;
-  video: boolean;
+  poster_path: string | null;
+  backdrop_path: string | null;
   vote_average: number;
   vote_count: number;
+  release_date: string;
+  overview: string;
+  genre_ids: number[];
+  original_language: string;
+  original_title: string;
+  popularity: number;
+  adult: boolean;
+  video: boolean;
+};
+
+export type MoviesResponse = {
+  page: number;
+  results: Movies[];
+  total_pages: number;
+  total_results: number;
 };
