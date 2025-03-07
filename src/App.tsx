@@ -3,7 +3,7 @@ import { lazy, Suspense } from 'react';
 import { CircularProgress } from '@mui/material';
 import { AppRoute } from './routes/AppRoute';
 
-const MoviesList = lazy(() => import('./components/moviesList/MoviesList'));
+const MoviesPage = lazy(() => import('./components/moviesPage/MoviesPage'));
 const MovieDetails = lazy(
   () => import('./components/movieDetails/MovieDetails')
 );
@@ -13,7 +13,7 @@ function App() {
     <BrowserRouter>
       <Suspense fallback={<CircularProgress />}>
         <Routes>
-          <Route path={AppRoute.Home} element={<MoviesList />} />
+          <Route path={AppRoute.Home} element={<MoviesPage />} />
           <Route path={AppRoute.MovieDetails} element={<MovieDetails />} />
         </Routes>
       </Suspense>
