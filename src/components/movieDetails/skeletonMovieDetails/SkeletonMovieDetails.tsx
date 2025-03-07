@@ -9,9 +9,9 @@ import {
   SkeletonProductionCompanies,
   SkeletonRatingWrapper,
   SkeletonWrapper,
-} from './MovieDetailsSkeleton.styles';
+} from './SkeletonMovieDetails.styles';
 
-export const MovieDetailsSkeleton = () => {
+export const SkeletonMovieDetails = () => {
   return (
     <SkeletonWrapper>
       <Skeleton variant={'rounded'} width={162} height={40} />

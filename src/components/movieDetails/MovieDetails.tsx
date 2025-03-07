@@ -5,9 +5,9 @@ import { IMAGE_API_URL } from '../../../api';
 import { Details } from './details/Details';
 import { Button } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import { AppRoute } from '../../routes/routes';
+import { AppRoute } from '../../routes/AppRoute';
 import { ProductionCompanies } from './productionCompanies/ProductionCompanies';
-import { MovieDetailsSkeleton } from './movieDetailsSkeleton/MovieDetailsSkeleton';
+import { SkeletonMovieDetails } from './skeletonMovieDetails/SkeletonMovieDetails';
 import { QueryClientProvider } from '@tanstack/react-query';
 import { queryClient } from '../../utils/queryClient';
 
@@ -17,7 +17,7 @@ const MovieDetailsRaw = () => {
   const { data, isLoading } = useGetMovieDetails(id ?? '0');
 
   if (isLoading) {
-    return <MovieDetailsSkeleton />;
+    return <SkeletonMovieDetails />;
   }
 
   if (!data) {
