@@ -1,9 +1,11 @@
-import { Card, CardActions, CardContent, CardMedia } from '@mui/material';
+import { Box, Card, CardContent, CardMedia } from '@mui/material';
 import { SingleMovieCardProps } from './SingleMovieCard.types';
 import { IMAGE_API_URL } from '../../../../api';
-import { CheckMoreButton } from './SingleMovieCard.styles';
 import useFormattedDate from '../../../hooks/useFormatDate';
 import { SingleMovieCardSkeleton } from '../SingleMovieCardSkeleton/SingeMovieCardSkeleton';
+import { useNavigate } from 'react-router-dom';
+import { AppRoute } from '../../../routes/AppRoute';
+import { useState } from 'react';
 
 export const SingleMovieCard = ({
   posterPath,
@@ -12,38 +14,85 @@ export const SingleMovieCard = ({
   releaseDate,
   isLoading,
   isFetchingNextPage,
+  id,
 }: SingleMovieCardProps) => {
+  const [isHovered, setIsHovered] = useState(false);
+  const navigate = useNavigate();
+  const formattedDate = useFormattedDate(releaseDate);
+
   if (isLoading || isFetchingNextPage) {
     return <SingleMovieCardSkeleton />;
   }
 
   return (
     <Card
+      component='a'
+      onClick={() =>
+        navigate(AppRoute.MovieDetails.replace(':id', id.toString()))
+      }
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
       sx={{
+        position: 'relative',
         width: 200,
-        height: 420,
+        height: 370,
         backgroundColor: '#aab9cf',
+        transition: '0.4s',
+        '&:hover': {
+          cursor: 'pointer',
+          transform: 'scale(1.05)',
+          opacity: 0.7,
+        },
       }}
     >
       <CardMedia
         sx={{ height: 300, width: 200 }}
         image={`${IMAGE_API_URL}/w200/${posterPath}`}
       />
+      {!!isHovered && (
+        <Box
+          sx={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            backgroundColor: 'rgba(0, 0, 0, 0.7)',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            transition: 'background-color 0.3s ease-in-out',
+          }}
+        >
+          <Box
+            sx={{
+              color: '#fff',
+              fontSize: '24px',
+              fontWeight: 'bold',
+              textAlign: 'center',
+              opacity: 1,
+            }}
+          >
+            Zobacz szczegóły
+          </Box>
+        </Box>
+      )}
       <CardContent
         sx={{
           display: 'flex',
           flexFlow: 'column',
-          padding: 1,
+          padding: '8px',
+          paddingBottom: 0,
           color: '#212227',
+          '&:last-child': {
+            paddingBottom: '8px',
+          },
         }}
       >
-        <span>Premiera: {useFormattedDate(releaseDate)}</span>
         <span>Ocena: {voteAverage}</span>
         <span>Ilość głosów: {voteCount}</span>
+        <span>Premiera: {formattedDate}</span>{' '}
       </CardContent>
-      <CardActions sx={{ display: 'flex', justifyContent: 'flex-end' }}>
-        <CheckMoreButton>Dowiedz się więcej!</CheckMoreButton>
-      </CardActions>
     </Card>
   );
 };
