@@ -15,3 +15,8 @@ export const Box = styled.div`
   padding: 32px 16px;
   border-radius: 4px;
 `;
+
+export const Image = styled.img`
+  min-width: 300px;
+  height: 450px;
+`;

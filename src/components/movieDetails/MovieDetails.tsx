@@ -1,6 +1,6 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import { useGetMovieDetails } from '../../api/useGetMovieDetails/useGetMovieDetails';
-import { Wrapper, Box } from './MovieDetails.styles';
+import { Wrapper, Box, Image } from './MovieDetails.styles';
 import { IMAGE_API_URL } from '../../../api';
 import { Details } from './details/Details';
 import { Button } from '@mui/material';
@@ -61,7 +61,7 @@ const MovieDetailsRaw = () => {
         Powrót do listy
       </Button>
       <Box>
-        <img src={`${IMAGE_API_URL}/w300/${poster_path}`} />
+        <Image src={`${IMAGE_API_URL}/w300/${poster_path}`} />
         <Details
           title={title}
           genres={genres}
