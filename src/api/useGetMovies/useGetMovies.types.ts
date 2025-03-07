@@ -21,3 +21,9 @@ export type MoviesResponse = {
   total_pages: number;
   total_results: number;
 };
+
+export type FetchMoviesParams = {
+  pageParam?: number;
+  genre?: string;
+  sortBy?: string;
+};

@@ -1,11 +1,15 @@
 import axios from 'axios';
-import { MoviesResponse } from './useGetMovies.types';
+import { MoviesResponse, FetchMoviesParams } from './useGetMovies.types';
 import { keepPreviousData, useInfiniteQuery } from '@tanstack/react-query';
 import { BASE_URL, API_KEY } from '../../../api';
 
-const fetchMovies = async ({ pageParam = 1 }) => {
+const fetchMovies = async ({
+  pageParam = 1,
+  genre = '',
+  sortBy = 'popularity.desc',
+}: FetchMoviesParams) => {
   const { data } = await axios.get<MoviesResponse>(
-    `${BASE_URL}discover/movie?api_key=${API_KEY}&language=pl-PL&sort_by=popularity.desc&page=${pageParam}`
+    `${BASE_URL}discover/movie?api_key=${API_KEY}&language=pl-PL&sort_by=${sortBy}&page=${pageParam}&with_genres=${genre}`
   );
   return {
     results: data.results,
@@ -13,10 +17,13 @@ const fetchMovies = async ({ pageParam = 1 }) => {
   };
 };
 
-export const useGetMovies = () => {
+export const useGetMovies = ({
+  genre = '',
+  sortBy = 'popularity.desc',
+} = {}) => {
   return useInfiniteQuery({
-    queryKey: ['movies'],
-    queryFn: fetchMovies,
+    queryKey: ['movies', genre, sortBy],
+    queryFn: ({ pageParam }) => fetchMovies({ pageParam, genre, sortBy }),
     initialPageParam: 1,
     getNextPageParam: (lastPage) => lastPage.nextPage,
     placeholderData: keepPreviousData,
