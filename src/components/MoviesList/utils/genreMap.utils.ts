@@ -6,7 +6,7 @@ export const genreMap = (
   return {
     '': '',
     ...Object.fromEntries(
-      (genres?.genres || []).map((genre) => [genre.name, genre.id.toString()])
+      (genres?.genres ?? []).map((genre) => [genre.name, genre.id.toString()])
     ),
   };
 };

@@ -11,7 +11,7 @@ const MoviesPageRaw = () => {
   const [sortBy, setSortBy] = useState<string>('');
 
   const { data: genres } = useGetGenres();
-  const categories = genres?.genres.map((genre) => genre.name) || [];
+  const categories = genres?.genres.map((genre) => genre.name) ?? [];
 
   const handleFilterChange = (filters: FilterType) => {
     setCategory(filters.category);

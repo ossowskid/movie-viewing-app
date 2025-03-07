@@ -10,8 +10,8 @@ export const MoviesList = ({ category, sortBy }: MoviesListProps) => {
 
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading } =
     useGetMovies({
-      genre: genreMap(genres)[category] || '',
-      sortBy: sortBy || 'popularity.desc',
+      genre: genreMap(genres)[category] ?? '',
+      sortBy: sortBy ?? 'popularity.desc',
     });
 
   if (!data) {
