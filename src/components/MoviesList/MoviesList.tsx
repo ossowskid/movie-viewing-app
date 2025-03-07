@@ -1,12 +1,18 @@
-import { QueryClientProvider } from '@tanstack/react-query';
 import { useGetMovies } from '../../api/useGetMovies/useGetMovies';
 import { CardsWrapper, LoadMoreButton, Wrapper } from './MoviesList.styles';
 import { MovieCard } from './movieCard/MovieCard';
-import { queryClient } from '../../utils/queryClient';
+import { useGetGenres } from '../../api/useGetGenres/useGetGenres';
+import { MoviesListProps } from './MoviesList.types';
+import { genreMap } from './utils/genreMap.utils';
 
-const MoviesListRaw = () => {
+export const MoviesList = ({ category, sortBy }: MoviesListProps) => {
+  const { data: genres } = useGetGenres();
+
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading } =
-    useGetMovies();
+    useGetMovies({
+      genre: genreMap(genres)[category] || '',
+      sortBy: sortBy || 'popularity.desc',
+    });
 
   if (!data) {
     return null;
@@ -43,13 +49,3 @@ const MoviesListRaw = () => {
     </Wrapper>
   );
 };
-
-const MoviesList = () => {
-  return (
-    <QueryClientProvider client={queryClient}>
-      <MoviesListRaw />
-    </QueryClientProvider>
-  );
-};
-
-export default MoviesList;
