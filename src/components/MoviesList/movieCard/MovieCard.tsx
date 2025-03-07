@@ -67,7 +67,7 @@ export const MovieCard = ({
           <Box
             sx={{
               color: '#fff',
-              fontSize: '24px',
+              fontSize: '20px',
               fontWeight: 'bold',
               textAlign: 'center',
               opacity: 1,
