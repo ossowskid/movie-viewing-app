@@ -3,6 +3,6 @@ export type Genre = {
   name: string;
 };
 
-export type CategoriesResponse = {
+export type GenresResponse = {
   genres: Genre[];
 };
