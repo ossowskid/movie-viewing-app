@@ -1,7 +1,7 @@
 import { useCallback, useState } from 'react';
 import { ProductionCompaniesProps } from './ProductionCompanies.types';
 import { IMAGE_API_URL } from '../../../../api';
-import { StyledImg, Wrapper, Container } from './ProductionCompanies.styles';
+import { Image, Wrapper, Container } from './ProductionCompanies.styles';
 
 export const ProductionCompanies = ({
   productionCompanies,
@@ -18,7 +18,7 @@ export const ProductionCompanies = ({
         .filter(({ logo_path }) => logo_path && !brokenImages.has(logo_path))
         .map(({ logo_path }) => (
           <Container key={logo_path}>
-            <StyledImg
+            <Image
               src={`${IMAGE_API_URL}/w200/${logo_path}`}
               onError={() => handleImageError(logo_path)}
             />
