@@ -5,4 +5,5 @@ export const Wrapper = styled.div`
   flex-flow: column;
   justify-content: space-between;
   gap: 10px;
+  width: 100%;
 `;
