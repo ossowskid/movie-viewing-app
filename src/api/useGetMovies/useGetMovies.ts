@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { MoviesResponse } from './useGetMovies.types';
-import { useInfiniteQuery } from '@tanstack/react-query';
+import { keepPreviousData, useInfiniteQuery } from '@tanstack/react-query';
 import { BASE_URL, API_KEY } from '../../../api';
 
 const fetchMovies = async ({ pageParam = 1 }) => {
@@ -19,5 +19,6 @@ export const useGetMovies = () => {
     queryFn: fetchMovies,
     initialPageParam: 1,
     getNextPageParam: (lastPage) => lastPage.nextPage,
+    placeholderData: keepPreviousData,
   });
 };
