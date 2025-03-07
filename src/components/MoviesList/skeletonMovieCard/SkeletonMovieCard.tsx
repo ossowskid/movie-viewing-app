@@ -1,6 +1,6 @@
 import { Skeleton } from '@mui/material';
 
-export const SingleMovieCardSkeleton = () => {
+export const SkeletonMovieCard = () => {
   return (
     <Skeleton
       sx={{ bgcolor: '#637074' }}

@@ -1,7 +1,7 @@
 import { QueryClientProvider } from '@tanstack/react-query';
 import { useGetMovies } from '../../api/useGetMovies/useGetMovies';
 import { CardsWrapper, LoadMoreButton, Wrapper } from './MoviesList.styles';
-import { SingleMovieCard } from './singleMovieCard/SingleMovieCard';
+import { MovieCard } from './movieCard/MovieCard';
 import { queryClient } from '../../utils/queryClient';
 
 const MoviesListRaw = () => {
@@ -18,7 +18,7 @@ const MoviesListRaw = () => {
         {data.pages.flatMap((page) =>
           page.results.map(
             ({ id, poster_path, vote_average, vote_count, release_date }) => (
-              <SingleMovieCard
+              <MovieCard
                 key={id}
                 posterPath={poster_path}
                 voteAverage={vote_average}

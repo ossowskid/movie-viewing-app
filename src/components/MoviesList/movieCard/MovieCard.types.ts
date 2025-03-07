@@ -1,4 +1,4 @@
-export type SingleMovieCardProps = {
+export type MovieCardProps = {
   posterPath: string | null;
   voteAverage: number;
   voteCount: number;

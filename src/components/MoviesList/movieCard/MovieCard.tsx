@@ -1,13 +1,13 @@
 import { Box, Card, CardContent, CardMedia } from '@mui/material';
-import { SingleMovieCardProps } from './SingleMovieCard.types';
+import { MovieCardProps } from './MovieCard.types';
 import { IMAGE_API_URL } from '../../../../api';
 import useFormattedDate from '../../../hooks/useFormatDate';
-import { SingleMovieCardSkeleton } from '../SingleMovieCardSkeleton/SingeMovieCardSkeleton';
+import { SkeletonMovieCard } from '../skeletonMovieCard/SkeletonMovieCard';
 import { useNavigate } from 'react-router-dom';
 import { AppRoute } from '../../../routes/AppRoute';
 import { useState } from 'react';
 
-export const SingleMovieCard = ({
+export const MovieCard = ({
   posterPath,
   voteAverage,
   voteCount,
@@ -15,13 +15,13 @@ export const SingleMovieCard = ({
   isLoading,
   isFetchingNextPage,
   id,
-}: SingleMovieCardProps) => {
+}: MovieCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
   const navigate = useNavigate();
   const formattedDate = useFormattedDate(releaseDate);
 
   if (isLoading || isFetchingNextPage) {
-    return <SingleMovieCardSkeleton />;
+    return <SkeletonMovieCard />;
   }
 
   return (
