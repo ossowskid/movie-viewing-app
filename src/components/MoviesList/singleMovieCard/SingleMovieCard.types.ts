@@ -5,4 +5,5 @@ export type SingleMovieCardProps = {
   releaseDate: string;
   isLoading: boolean;
   isFetchingNextPage: boolean;
+  id: number;
 };
