@@ -3,7 +3,7 @@ import { lazy, Suspense } from 'react';
 import { CircularProgress } from '@mui/material';
 import { AppRoute } from './routes/AppRoute';
 
-const MoviesList = lazy(() => import('./components/MoviesList/MoviesList'));
+const MoviesList = lazy(() => import('./components/moviesList/MoviesList'));
 const MovieDetails = lazy(
   () => import('./components/movieDetails/MovieDetails')
 );
