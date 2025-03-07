@@ -8,11 +8,13 @@ export const Overview = ({ tagline, overview }: OverviewProps) => {
 
   return (
     <Wrapper>
-      <h3>{tagline}</h3>
-      <OverviewWrapper>
-        <strong>Opis</strong>
-        <span>{overview}</span>
-      </OverviewWrapper>
+      {!!tagline && <h3>{tagline}</h3>}
+      {!!overview && (
+        <OverviewWrapper>
+          <strong>Opis</strong>
+          <span>{overview}</span>
+        </OverviewWrapper>
+      )}
     </Wrapper>
   );
 };
