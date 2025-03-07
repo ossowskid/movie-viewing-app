@@ -1,12 +1,6 @@
 import useFormattedDate from '../../../hooks/useFormatDate';
 import { formatRuntime } from '../utils/formatRuntime';
-// import { formatRuntime } from '../utils/formatRuntime';
-import {
-  AdditionalHeader,
-  ReleaseDateTitle,
-  StyledH2,
-  Wrapper,
-} from './HeaderDetails.styles';
+import { MovieInfo, H1, ReleaseDate, Wrapper } from './HeaderDetails.styles';
 import { HeaderDetailsProps } from './HeaderDetails.types';
 
 export const HeaderDetails = ({
@@ -17,17 +11,15 @@ export const HeaderDetails = ({
 }: HeaderDetailsProps) => {
   return (
     <Wrapper>
-      <StyledH2>
+      <H1>
         {title}{' '}
-        <ReleaseDateTitle>
-          ({useFormattedDate(releaseDate, 'yyyy')})
-        </ReleaseDateTitle>
-      </StyledH2>
-      <AdditionalHeader>
+        <ReleaseDate>({useFormattedDate(releaseDate, 'yyyy')})</ReleaseDate>
+      </H1>
+      <MovieInfo>
         <span>{useFormattedDate(releaseDate, 'dd.MM.yyyy')} (PL)</span> |{' '}
         <span>{genres.map(({ name }) => name).join(', ')}</span>
         {!!runtime && <span> | {formatRuntime(runtime)}</span>}
-      </AdditionalHeader>
+      </MovieInfo>
     </Wrapper>
   );
 };

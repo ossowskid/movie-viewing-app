@@ -6,16 +6,16 @@ export const Wrapper = styled.div`
   gap: 8px;
 `;
 
-export const StyledH2 = styled.h1`
+export const H1 = styled.h1`
   margin: 0;
 `;
 
-export const ReleaseDateTitle = styled.span`
+export const ReleaseDate = styled.span`
   opacity: 0.8;
   font-weight: 400;
 `;
 
-export const AdditionalHeader = styled.div`
+export const MovieInfo = styled.div`
   display: flex;
   flex-flow: row;
   gap: 4px;
