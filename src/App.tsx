@@ -13,7 +13,7 @@ function App() {
     <BrowserRouter>
       <Suspense fallback={<CircularProgress />}>
         <Routes>
-          <Route path={AppRoute.MoviesList} element={<MoviesList />} />
+          <Route path={AppRoute.Home} element={<MoviesList />} />
           <Route path={AppRoute.MovieDetails} element={<MovieDetails />} />
         </Routes>
       </Suspense>
