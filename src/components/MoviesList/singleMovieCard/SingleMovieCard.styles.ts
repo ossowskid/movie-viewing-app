@@ -1,15 +1,14 @@
 import styled from 'styled-components';
 
-export const CheckMoreButton = styled.button`
-  background: #8693ab;
-  border: none;
-  width: fit-content;
-  padding: 8px 16px;
+export const CheckDetails = styled.span`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-size: 16px;
+  text-align: center;
+  background: #000;
+  padding: 8px;
   border-radius: 4px;
-  color: #212227;
-
-  &:hover {
-    cursor: pointer;
-    background: #637074;
-  }
 `;

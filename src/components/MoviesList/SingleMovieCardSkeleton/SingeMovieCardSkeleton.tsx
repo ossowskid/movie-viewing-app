@@ -6,7 +6,7 @@ export const SingleMovieCardSkeleton = () => {
       sx={{ bgcolor: '#637074' }}
       variant='rectangular'
       width={200}
-      height={400}
+      height={370}
     />
   );
 };
