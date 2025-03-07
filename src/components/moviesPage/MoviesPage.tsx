@@ -4,14 +4,15 @@ import { Filters } from '../filters/Filters';
 import { useState } from 'react';
 import { FilterType } from './MoviesPage.types';
 import { MoviesList } from '../moviesList/MoviesList';
-import { useGetGenres } from '../../api/useGetGenres/useGetGenres';
+import { GenresProvider } from '../../context/useGetGenresContext/GenresProvider';
+import { useGetGenresContext } from '../../context/useGetGenresContext/useGetGenresContext';
 
 const MoviesPageRaw = () => {
   const [category, setCategory] = useState<string>('');
   const [sortBy, setSortBy] = useState<string>('');
 
-  const { data: genres } = useGetGenres();
-  const categories = genres?.genres.map((genre) => genre.name) ?? [];
+  const { genres } = useGetGenresContext();
+  const categories = genres?.map((genre) => genre.name) ?? [];
 
   const handleFilterChange = (filters: FilterType) => {
     setCategory(filters.category);
@@ -36,7 +37,9 @@ const MoviesPageRaw = () => {
 const MoviesPage = () => {
   return (
     <QueryClientProvider client={queryClient}>
-      <MoviesPageRaw />
+      <GenresProvider>
+        <MoviesPageRaw />
+      </GenresProvider>
     </QueryClientProvider>
   );
 };
