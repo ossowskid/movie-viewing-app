@@ -1,12 +1,11 @@
 import { useGetMovies } from '../../api/useGetMovies/useGetMovies';
+import { useGetGenresContext } from '../../context/useGetGenresContext/useGetGenresContext';
 import { CardsWrapper, LoadMoreButton, Wrapper } from './MoviesList.styles';
 import { MovieCard } from './movieCard/MovieCard';
-import { MoviesListProps } from './MoviesList.types';
 import { genreMap } from './utils/genreMap.utils';
-import { useGetGenresContext } from '../../context/useGetGenresContext/useGetGenresContext';
 
-export const MoviesList = ({ category, sortBy }: MoviesListProps) => {
-  const { genres } = useGetGenresContext();
+export const MoviesList = () => {
+  const { genres, category, sortBy } = useGetGenresContext();
 
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading } =
     useGetMovies({

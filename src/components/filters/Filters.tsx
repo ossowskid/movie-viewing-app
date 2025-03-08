@@ -7,34 +7,34 @@ import {
   InputLabel,
   SelectChangeEvent,
 } from '@mui/material';
-import { FiltersProps } from './Filters.types';
 import { sortOptions } from './sortOptions';
+import { useGetGenresContext } from '../../context/useGetGenresContext/useGetGenresContext';
 
-export const Filters = ({
-  category,
-  sortBy,
-  setCategory,
-  setSortBy,
-  onFilterChange,
-  categories = [],
-}: FiltersProps) => {
+export const Filters = () => {
+  const { genres, category, sortBy, setCategory, setSortBy } =
+    useGetGenresContext();
+
   const handleCategoryChange = useCallback(
     (e: SelectChangeEvent<string>) => {
       const newCategory = e.target.value as string;
       setCategory(newCategory);
-      onFilterChange({ category: newCategory, sortBy });
     },
-    [sortBy, onFilterChange]
+    [sortBy]
   );
 
   const handleSortChange = useCallback(
     (e: SelectChangeEvent<string>) => {
       const newSortBy = e.target.value as string;
       setSortBy(newSortBy);
-      onFilterChange({ category, sortBy: newSortBy });
     },
-    [category, onFilterChange]
+    [category]
   );
+
+  if (!genres) {
+    return null;
+  }
+
+  const categories = genres.map((genre) => genre.name);
 
   return (
     <Box
