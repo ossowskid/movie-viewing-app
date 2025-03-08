@@ -48,7 +48,8 @@ export const Filters = () => {
         display: 'flex',
         flexDirection: 'column',
         gap: 2,
-        padding: 2,
+        padding: '32px 24px',
+        background: '#aab9cf',
       }}
     >
       <FormControl fullWidth>
