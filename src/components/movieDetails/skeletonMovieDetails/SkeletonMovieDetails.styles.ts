@@ -8,12 +8,6 @@ const boxStyles = css`
   border-radius: 4px;
 `;
 
-export const SkeletonWrapper = styled.div`
-  display: flex;
-  flex-flow: column;
-  gap: 20px;
-`;
-
 export const SkeletonBox = styled.div`
   ${boxStyles};
   padding: 32px 16px;

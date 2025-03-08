@@ -1,20 +1,23 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import { useGetMovieDetails } from '../../api/useGetMovieDetails/useGetMovieDetails';
-import { Wrapper, Box, Image } from './MovieDetails.styles';
+import { Image } from './MovieDetails.styles';
 import { IMAGE_API_URL } from '../../../api';
 import { Details } from './details/Details';
-import { Button } from '@mui/material';
+import { Box, Button, Container, useMediaQuery, useTheme } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { AppRoute } from '../../routes/AppRoute';
 import { ProductionCompanies } from './productionCompanies/ProductionCompanies';
 import { SkeletonMovieDetails } from './skeletonMovieDetails/SkeletonMovieDetails';
 import { QueryClientProvider } from '@tanstack/react-query';
 import { queryClient } from '../../utils/queryClient';
+import { AdditionalInformations } from './additionalInformations/AdditionalInformations';
 
 const MovieDetailsRaw = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   const { data, isLoading } = useGetMovieDetails(id ?? '0');
+  const theme = useTheme();
+  const isSmToMdScreen = useMediaQuery(theme.breakpoints.between('sm', 'md'));
 
   if (isLoading) {
     return <SkeletonMovieDetails />;
@@ -39,7 +42,7 @@ const MovieDetailsRaw = () => {
   } = data;
 
   return (
-    <Wrapper>
+    <Container sx={{ display: 'flex', flexFlow: 'column', gap: '20px' }}>
       <Button
         variant='outlined'
         startIcon={<ArrowBackIcon />}
@@ -60,8 +63,30 @@ const MovieDetailsRaw = () => {
       >
         Powrót do listy
       </Button>
-      <Box>
-        <Image src={`${IMAGE_API_URL}/w300/${poster_path}`} />
+      <Box
+        sx={{
+          display: 'flex',
+          flexFlow: { xs: 'column', sm: 'row' },
+          justifyContent: { xs: 'center', md: 'flex-start' },
+          gap: '20px',
+          background: '#aab9cf',
+          padding: '32px 16px',
+          borderRadius: '4px',
+          alignItems: { xs: 'center', sm: 'flex-start' },
+        }}
+      >
+        {isSmToMdScreen ? (
+          <Box sx={{ display: 'flex', flexFlow: 'column', gap: '20px' }}>
+            <Image src={`${IMAGE_API_URL}/w200/${poster_path}`} />
+            <AdditionalInformations
+              voteAverage={vote_average}
+              voteCount={vote_count}
+              homepage={homepage}
+            />
+          </Box>
+        ) : (
+          <Image src={`${IMAGE_API_URL}/w300/${poster_path}`} />
+        )}
         <Details
           title={title}
           genres={genres}
@@ -75,7 +100,7 @@ const MovieDetailsRaw = () => {
         />
       </Box>
       <ProductionCompanies productionCompanies={production_companies} />
-    </Wrapper>
+    </Container>
   );
 };
 
