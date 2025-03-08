@@ -6,6 +6,7 @@ import {
   FormControl,
   InputLabel,
   SelectChangeEvent,
+  Button,
 } from '@mui/material';
 import { sortOptions } from './sortOptions';
 import { useGetGenresContext } from '../../context/useGetGenresContext/useGetGenresContext';
@@ -29,6 +30,11 @@ export const Filters = () => {
     },
     [category]
   );
+
+  const handleResetFilters = useCallback(() => {
+    setCategory('');
+    setSortBy('');
+  }, [setCategory, setSortBy]);
 
   if (!genres) {
     return null;
@@ -82,6 +88,14 @@ export const Filters = () => {
           ))}
         </Select>
       </FormControl>
+      <Button
+        variant='outlined'
+        color='primary'
+        onClick={handleResetFilters}
+        sx={{ mt: 2, width: 'fit-content' }}
+      >
+        Resetuj filtry
+      </Button>
     </Box>
   );
 };
