@@ -1,10 +1,10 @@
-import { Box } from '@mui/material';
+import { Container } from '@mui/material';
 import { Filters } from '../filters/Filters';
 import { MoviesList } from '../moviesList/MoviesList';
 
 export const MoviesPage = () => {
   return (
-    <Box
+    <Container
       sx={{
         display: 'flex',
         flexFlow: 'column',
@@ -13,7 +13,7 @@ export const MoviesPage = () => {
     >
       <Filters />
       <MoviesList />
-    </Box>
+    </Container>
   );
 };
 
