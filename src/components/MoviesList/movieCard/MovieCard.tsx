@@ -36,7 +36,7 @@ export const MovieCard = ({
         position: 'relative',
         width: 200,
         height: 370,
-        backgroundColor: '#aab9cf',
+        backgroundColor: '#8693ab',
         transition: '0.4s',
         '&:hover': {
           cursor: 'pointer',
