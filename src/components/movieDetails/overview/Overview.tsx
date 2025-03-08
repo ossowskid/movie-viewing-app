@@ -1,4 +1,4 @@
-import { OverviewWrapper, Wrapper } from './Overview.styles';
+import { Box } from '@mui/material';
 import { OverviewProps } from './Overview.types';
 
 export const Overview = ({ tagline, overview }: OverviewProps) => {
@@ -7,14 +7,14 @@ export const Overview = ({ tagline, overview }: OverviewProps) => {
   }
 
   return (
-    <Wrapper>
+    <Box sx={{ minHeight: '250px', maxWidth: 650 }}>
       {!!tagline && <h3>{tagline}</h3>}
       {!!overview && (
-        <OverviewWrapper>
+        <Box sx={{ display: 'flex', flexFlow: 'column', gap: '8px' }}>
           <strong>Opis</strong>
           <span>{overview}</span>
-        </OverviewWrapper>
+        </Box>
       )}
-    </Wrapper>
+    </Box>
   );
 };

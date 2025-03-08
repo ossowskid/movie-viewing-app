@@ -1,5 +1,4 @@
-import { Button, Rating } from '@mui/material';
-import { RatingWrapper, Wrapper } from './AdditionalInformations.styles';
+import { Box, Button, Rating } from '@mui/material';
 import { AdditionalInformationsProps } from './AdditionalInformations.types';
 
 export const AdditionalInformations = ({
@@ -8,8 +7,16 @@ export const AdditionalInformations = ({
   homepage,
 }: AdditionalInformationsProps) => {
   return (
-    <Wrapper>
-      <RatingWrapper>
+    <Box
+      sx={{
+        display: 'flex',
+        flexFlow: { xs: 'column', md: 'row' },
+        justifyContent: 'space-between',
+        alignItems: { xs: 'flex-start', md: 'center' },
+        gap: { xs: '20px', md: '0' },
+      }}
+    >
+      <Box sx={{ display: 'flex', flexFlow: 'column', gap: '4px' }}>
         <strong>Ocena użytkowników</strong>
         <Rating
           name='customized-10'
@@ -17,9 +24,10 @@ export const AdditionalInformations = ({
           value={voteAverage}
           max={10}
           readOnly
+          sx={{ fontSize: { xs: '1.2rem', md: '1.5rem' } }}
         />
         <span>Ilość głosów: {voteCount}</span>
-      </RatingWrapper>
+      </Box>
       {!!homepage && (
         <Button
           component='a'
@@ -44,6 +52,6 @@ export const AdditionalInformations = ({
           Obejrzyj teraz!
         </Button>
       )}
-    </Wrapper>
+    </Box>
   );
 };

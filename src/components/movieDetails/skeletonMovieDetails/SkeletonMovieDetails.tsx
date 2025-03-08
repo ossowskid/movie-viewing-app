@@ -1,4 +1,4 @@
-import { Skeleton } from '@mui/material';
+import { Container, Skeleton } from '@mui/material';
 import {
   SkeletonAdditionalInformationsWrapper,
   SkeletonBox,
@@ -8,12 +8,11 @@ import {
   SkeletonOverviewWrapper,
   SkeletonProductionCompanies,
   SkeletonRatingWrapper,
-  SkeletonWrapper,
 } from './SkeletonMovieDetails.styles';
 
 export const SkeletonMovieDetails = () => {
   return (
-    <SkeletonWrapper>
+    <Container sx={{ display: 'flex', flexFlow: 'column', gap: '20px' }}>
       <Skeleton variant={'rounded'} width={162} height={40} />
       <SkeletonBox>
         <Skeleton variant={'rectangular'} width={300} height={450} />
@@ -31,7 +30,7 @@ export const SkeletonMovieDetails = () => {
             />
             <SkeletonOverviewDetails>
               <Skeleton variant={'rounded'} height={18} width={40} />
-              <Skeleton variant={'rounded'} height={90} width={450} />
+              <Skeleton variant={'rounded'} height={90} width={650} />
             </SkeletonOverviewDetails>
           </SkeletonOverviewWrapper>
           <SkeletonAdditionalInformationsWrapper>
@@ -48,6 +47,6 @@ export const SkeletonMovieDetails = () => {
         <Skeleton variant={'rectangular'} width={100} height={100} />
         <Skeleton variant={'rectangular'} width={100} height={100} />
       </SkeletonProductionCompanies>
-    </SkeletonWrapper>
+    </Container>
   );
 };

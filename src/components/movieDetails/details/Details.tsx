@@ -1,8 +1,8 @@
-import { Wrapper } from './Details.styles';
 import { DetailsProps } from './Details.types';
 import { HeaderDetails } from '../headerDetails/HeaderDetails';
 import { Overview } from '../overview/Overview';
 import { AdditionalInformations } from '../additionalInformations/AdditionalInformations';
+import { Box, useMediaQuery, useTheme } from '@mui/material';
 
 export const Details = ({
   title,
@@ -15,8 +15,21 @@ export const Details = ({
   homepage,
   runtime,
 }: DetailsProps) => {
+  const theme = useTheme();
+  const isMaxSmScreen = useMediaQuery(theme.breakpoints.down('sm'));
+  const isMinMdScreen = useMediaQuery(theme.breakpoints.up('md'));
+
   return (
-    <Wrapper>
+    <Box
+      sx={{
+        display: 'flex',
+        flexFlow: 'column',
+        justifyContent: 'space-between',
+        width: '100%',
+        gap: { xs: '20px', sm: '0' },
+        minHeight: { md: '450px' },
+      }}
+    >
       <HeaderDetails
         title={title}
         genres={genres}
@@ -24,11 +37,13 @@ export const Details = ({
         runtime={runtime}
       />
       <Overview tagline={tagline} overview={overview} />
-      <AdditionalInformations
-        voteAverage={voteAverage}
-        voteCount={voteCount}
-        homepage={homepage}
-      />
-    </Wrapper>
+      {(!!isMaxSmScreen || !!isMinMdScreen) && (
+        <AdditionalInformations
+          voteAverage={voteAverage}
+          voteCount={voteCount}
+          homepage={homepage}
+        />
+      )}
+    </Box>
   );
 };

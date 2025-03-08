@@ -11,6 +11,7 @@
 }
 
 body {
-  margin: 0;
+  width: 100vw;
+  margin: 0 auto;
   align-items: center;
 }
