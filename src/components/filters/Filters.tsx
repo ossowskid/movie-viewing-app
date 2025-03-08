@@ -6,6 +6,7 @@ import {
   FormControl,
   InputLabel,
   SelectChangeEvent,
+  Button,
 } from '@mui/material';
 import { sortOptions } from './sortOptions';
 import { useGetGenresContext } from '../../context/useGetGenresContext/useGetGenresContext';
@@ -30,6 +31,11 @@ export const Filters = () => {
     [category]
   );
 
+  const handleResetFilters = useCallback(() => {
+    setCategory('');
+    setSortBy('');
+  }, [setCategory, setSortBy]);
+
   if (!genres) {
     return null;
   }
@@ -42,7 +48,8 @@ export const Filters = () => {
         display: 'flex',
         flexDirection: 'column',
         gap: 2,
-        padding: 2,
+        padding: '32px 24px',
+        background: '#aab9cf',
       }}
     >
       <FormControl fullWidth>
@@ -82,6 +89,14 @@ export const Filters = () => {
           ))}
         </Select>
       </FormControl>
+      <Button
+        variant='outlined'
+        color='primary'
+        onClick={handleResetFilters}
+        sx={{ mt: 2, width: 'fit-content' }}
+      >
+        Resetuj filtry
+      </Button>
     </Box>
   );
 };
