@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { ChangeEvent, useCallback, useState } from 'react';
 import {
   Box,
   FormControl,
@@ -28,7 +28,7 @@ export const Filters = () => {
   } = useGetGenresContext();
 
   const handleSortChange = useCallback(
-    (event: React.ChangeEvent<HTMLInputElement>) => {
+    (event: ChangeEvent<HTMLInputElement>) => {
       const newSortBy = event.target.value;
       setSortBy(newSortBy);
     },
