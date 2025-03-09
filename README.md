@@ -1,54 +1,63 @@
-# React + TypeScript + Vite
+<div align="center"> <h1>🎬 Movies Explorer</h1> <p>Przeglądaj filmy z TMDb w stylowy sposób!</p> <img src="https://img.shields.io/badge/React-18.2-blue?logo=react" alt="React Badge" /> <img src="https://img.shields.io/badge/TypeScript-5.0-blue?logo=typescript" alt="TypeScript Badge" /> <img src="https://img.shields.io/badge/MUI-5.15-blue?logo=mui" alt="MUI Badge" /> <img src="https://img.shields.io/badge/License-MIT-green" alt="License Badge" /> </div>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+📖 O projekcie
+Movies Explorer to aplikacja webowa stworzona w React z TypeScriptem, która pozwala odkrywać filmy z bazy TMDb. Filtrowanie gatunków, sortowanie i szczegółowe informacje o filmach – wszystko w responsywnym i nowoczesnym interfejsie!
 
-Currently, two official plugins are available:
+"Oglądaj, filtruj, odkrywaj – kino na wyciągnięcie ręki!"
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+✨ Funkcjonalności
+🎥 Lista filmów: Karty z plakatami, ocenami i datami premier.
+✅ Filtrowanie: Wybór gatunków za pomocą checkboxów.
+🔄 Sortowanie: Opcje sortowania (np. popularność, ocena) z radio buttons.
+📜 Szczegóły filmu: Informacje o filmie, firmy produkcyjne, linki zewnętrzne.
+📱 Responsywność: Dostosowanie do różnych ekranów dzięki MUI.
+⏳ Infinite Scroll: Paginacja z przyciskiem "Załaduj więcej".
+⚠️ Obsługa błędów: Fallbacki dla obrazów i danych.
 
-## Expanding the ESLint configuration
+⚙️ Wymagania
+Node.js: v16 lub nowsza
+npm lub Yarn
+Klucz API TMDb: Zarejestruj się na TMDb
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+🚀 Instalacja
+Sklonuj repozytorium:
 
 ```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+git clone https://github.com/yourusername/movies-explorer.git
+cd movies-explorer
 ```
+
+Zainstaluj zależności:
+```js
+npm install
+```
+lub
+```js
+yarn install
+```
+Skonfiguruj zmienne środowiskowe:
+Utwórz plik .env w głównym katalogu:
+```js
+REACT_APP_TMDB_API_KEY=your_api_key_here
+REACT_APP_IMAGE_API_URL=https://image.tmdb.org/t/p
+```
+Uruchom aplikację:
+```js
+npm start
+```
+```js
+yarn start
+```
+Otwórz w przeglądarce: http://localhost:3000.
+
+🎮 Użycie
+Strona główna:
+🗂️ Wybierz gatunki w filtrach.
+🔍 Ustaw sortowanie.
+⬇️ Kliknij "Załaduj więcej" dla kolejnych filmów.
+Szczegóły filmu:
+🎬 Kliknij kartę filmu, by zobaczyć szczegóły.
+🔙 Wróć przyciskiem "Powrót do listy".
+
+🎨 Motyw kolorystyczny
+<div align="center"> <table> <tr> <th>Kolor</th> <th>Kod</th> <th>Użycie</th> </tr> <tr> <td>🖤 Głęboka czerń</td> <td><code>#0A0A0A</code></td> <td>Tło aplikacji</td> </tr> <tr> <td>🌑 Ciemny szary</td> <td><code>#1A1A1A</code></td> <td>Sekcje (np. filtry)</td> </tr> <tr> <td>🌗 Jaśniejszy szary</td> <td><code>#2A2A2A</code></td> <td>Lista filmów, karty</td> </tr> <tr> <td>❤️ Czerwony</td> <td><code>#E50914</code></td> <td>Przyciski akcji</td> </tr> <tr> <td>💛 Złoty</td> <td><code>#D4AF37</code></td> <td>Oceny, akcenty</td> </tr> <tr> <td>💙 Niebieski</td> <td><code>#1E3A8A</code></td> <td>Linki zewnętrzne</td> </tr> <tr> <td>🤍 Biały</td> <td><code>#FFFFFF</code></td> <td>Tekst główny</td> </tr> <tr> <td>🌫️ Jasnoszary</td> <td><code>#D3D3D3</code></td> <td>Tekst drugorzędny</td> </tr> </table> </div>
