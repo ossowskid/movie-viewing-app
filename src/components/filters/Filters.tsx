@@ -123,13 +123,13 @@ export const Filters = () => {
                   control={<Radio />}
                   label={'Domyślne'}
                 />
-                {sortOptions.map((option) => (
+                {sortOptions.map(({ value, label }) => (
                   <FormControlLabel
                     sx={{ width: 213 }}
-                    key={option.value}
-                    value={option.value}
+                    key={value}
+                    value={value}
                     control={<Radio />}
-                    label={option.label}
+                    label={label}
                   />
                 ))}
               </RadioGroup>
