@@ -44,7 +44,7 @@ const MovieDetailsRaw = () => {
   return (
     <Container sx={{ display: 'flex', flexFlow: 'column', gap: '20px' }}>
       <Button
-        variant='outlined'
+        variant={'outlined'}
         startIcon={<ArrowBackIcon />}
         onClick={() => navigate(AppRoute.Home)}
         sx={{
