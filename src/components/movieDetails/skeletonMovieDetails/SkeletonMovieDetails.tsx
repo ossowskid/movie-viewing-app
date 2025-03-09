@@ -13,7 +13,7 @@ export const SkeletonMovieDetails = () => {
   const isSmToMdScreen = useMediaQuery(theme.breakpoints.between('sm', 'md'));
 
   return (
-    <Container sx={{ display: 'flex', flexFlow: 'column', gap: '20px', py: 2 }}>
+    <Container sx={{ display: 'flex', flexFlow: 'column', gap: '20px' }}>
       <Skeleton variant='rounded' width={162} height={40} />
       <Box
         sx={{
@@ -46,7 +46,7 @@ export const SkeletonMovieDetails = () => {
             variant='rectangular'
             sx={{
               width: { xs: 200, sm: 250, md: 300 },
-              height: { xs: 300, sm: 350, md: 400 },
+              height: { xs: 300, sm: 350, md: 450 },
               flexShrink: 0,
             }}
           />
@@ -62,10 +62,16 @@ export const SkeletonMovieDetails = () => {
               sm: 'unset',
               md: 'space-between',
             },
-            minHeight: { md: 450 },
+            minHeight: 450,
           }}
         >
-          <Box sx={{ display: 'flex', flexFlow: 'column', gap: '8px' }}>
+          <Box
+            sx={{
+              display: 'flex',
+              flexFlow: 'column',
+              gap: '8px',
+            }}
+          >
             <Skeleton
               variant='rounded'
               sx={{ width: { xs: '90%', md: 450 }, height: 37 }}
@@ -85,17 +91,26 @@ export const SkeletonMovieDetails = () => {
             sx={{
               display: 'flex',
               flexFlow: 'column',
-              gap: '8px',
-              mt: { xs: 2, md: '19px' },
+              minHeight: '250px',
             }}
           >
             <Skeleton
               variant='rounded'
-              sx={{ width: { xs: '100%', md: 3000 }, height: 22 }}
+              sx={{
+                width: { xs: '100%', md: 300 },
+                height: 22,
+                margin: '19px 0',
+              }}
             />
             <Skeleton
               variant='rounded'
-              sx={{ width: { xs: '100%', md: 650 }, height: 90 }}
+              width={32}
+              height={22}
+              sx={{ width: 32, height: 22, marginBottom: '8px' }}
+            />
+            <Skeleton
+              variant='rounded'
+              sx={{ width: { xs: '100%', md: 450 }, height: 90 }}
             />
           </Box>
           {isMaxSmScreen || isMinMdScreen ? (
@@ -104,7 +119,6 @@ export const SkeletonMovieDetails = () => {
                 display: 'flex',
                 flexFlow: 'column',
                 gap: '4px',
-                mt: 'auto',
               }}
             >
               <Skeleton variant='rounded' height={18} width={147} />
