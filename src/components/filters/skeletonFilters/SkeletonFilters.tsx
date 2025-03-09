@@ -7,7 +7,7 @@ export const SkeletonFilters = () => {
         display: 'flex',
         flexFlow: 'column',
         padding: '32px 8px',
-        background: '#aab9cf',
+        background: 'background.paper',
         alignItems: 'center',
         height: 'fit-content',
       }}

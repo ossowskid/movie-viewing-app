@@ -41,10 +41,10 @@ export const AdditionalInformations = ({
             borderRadius: '4px',
             padding: '8px 16px',
             transition: '0.3s',
-            color: '#212227',
-            backgroundColor: '#8693ab',
+            backgroundColor: 'info.main',
+            color: 'text.primary',
             '&:hover': {
-              backgroundColor: '#637074',
+              backgroundColor: 'info.dark',
               transform: 'scale(1.05)',
             },
           }}
