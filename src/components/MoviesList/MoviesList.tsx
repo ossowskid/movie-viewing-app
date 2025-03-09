@@ -2,14 +2,13 @@ import { Box, Button, Container } from '@mui/material';
 import { useGetMovies } from '../../api/useGetMovies/useGetMovies';
 import { useGetGenresContext } from '../../context/useGetGenresContext/useGetGenresContext';
 import { MovieCard } from './movieCard/MovieCard';
-import { genreMap } from './utils/genreMap.utils';
 
 export const MoviesList = () => {
-  const { genres, category, sortBy } = useGetGenresContext();
+  const { selectedGenres, sortBy } = useGetGenresContext();
 
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading } =
     useGetMovies({
-      genre: genreMap(genres)[category] ?? '',
+      genre: selectedGenres,
       sortBy: sortBy ?? 'popularity.desc',
     });
 
