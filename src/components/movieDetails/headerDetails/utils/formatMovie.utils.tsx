@@ -12,9 +12,9 @@ export const formatMovieInfo = (
   const formattedRuntime = runtime ? formatRuntime(runtime) : null;
 
   const items = [
-    formattedDate ? <span key='date'>{formattedDate} (PL)</span> : null,
-    genreNames ? <span key='genres'>{genreNames}</span> : null,
-    formattedRuntime ? <span key='runtime'>{formattedRuntime}</span> : null,
+    formattedDate ? <span key={'date'}>{formattedDate} (PL)</span> : null,
+    genreNames ? <span key={'genres'}>{genreNames}</span> : null,
+    formattedRuntime ? <span key={'runtime'}>{formattedRuntime}</span> : null,
   ].filter(Boolean);
 
   return isMaxMdScreen

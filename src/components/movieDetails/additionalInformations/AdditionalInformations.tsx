@@ -19,7 +19,7 @@ export const AdditionalInformations = ({
       <Box sx={{ display: 'flex', flexFlow: 'column', gap: '4px' }}>
         <strong>Ocena użytkowników</strong>
         <Rating
-          name='customized-10'
+          name={'customized-10'}
           precision={0.01}
           value={voteAverage}
           max={10}
@@ -30,11 +30,11 @@ export const AdditionalInformations = ({
       </Box>
       {!!homepage && (
         <Button
-          component='a'
+          component={'a'}
           href={homepage}
-          target='_blank'
-          rel='noopener noreferrer'
-          variant='contained'
+          target={'_blank'}
+          rel={'noopener noreferrer'}
+          variant={'contained'}
           sx={{
             fontSize: '14px',
             fontWeight: 'bold',
