@@ -27,7 +27,7 @@ export const MovieCard = ({
 
   return (
     <Card
-      component='a'
+      component={'a'}
       onClick={() =>
         navigate(AppRoute.MovieDetails.replace(':id', id.toString()))
       }

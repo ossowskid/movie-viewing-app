@@ -14,7 +14,7 @@ export const SkeletonMovieDetails = () => {
 
   return (
     <Container sx={{ display: 'flex', flexFlow: 'column', gap: '20px' }}>
-      <Skeleton variant='rounded' width={162} height={40} />
+      <Skeleton variant={'rounded'} width={162} height={40} />
       <Box
         sx={{
           display: 'flex',
@@ -28,7 +28,7 @@ export const SkeletonMovieDetails = () => {
         {isSmToMdScreen ? (
           <Box sx={{ display: 'flex', flexFlow: 'column', gap: '20px' }}>
             <Skeleton
-              variant='rectangular'
+              variant={'rectangular'}
               sx={{
                 width: { xs: 200, sm: 250 },
                 height: { xs: 300, sm: 350 },
@@ -36,14 +36,14 @@ export const SkeletonMovieDetails = () => {
               }}
             />
             <Box sx={{ display: 'flex', flexFlow: 'column', gap: '4px' }}>
-              <Skeleton variant='rounded' height={18} width={147} />
-              <Skeleton variant='rounded' height={24} width={240} />
-              <Skeleton variant='rounded' height={18} width={122} />
+              <Skeleton variant={'rounded'} height={18} width={147} />
+              <Skeleton variant={'rounded'} height={24} width={240} />
+              <Skeleton variant={'rounded'} height={18} width={122} />
             </Box>
           </Box>
         ) : (
           <Skeleton
-            variant='rectangular'
+            variant={'rectangular'}
             sx={{
               width: { xs: 200, sm: 250, md: 300 },
               height: { xs: 300, sm: 350, md: 450 },
@@ -73,17 +73,17 @@ export const SkeletonMovieDetails = () => {
             }}
           >
             <Skeleton
-              variant='rounded'
+              variant={'rounded'}
               sx={{ width: { xs: '90%', md: 450 }, height: 37 }}
             />
             <Skeleton
-              variant='rounded'
+              variant={'rounded'}
               sx={{ width: { xs: '70%', md: 400 }, height: 18 }}
             />
             {!isMinMdScreen && (
               <>
-                <Skeleton variant='rounded' height={18} width={200} />
-                <Skeleton variant='rounded' height={18} width={100} />
+                <Skeleton variant={'rounded'} height={18} width={200} />
+                <Skeleton variant={'rounded'} height={18} width={100} />
               </>
             )}
           </Box>
@@ -95,7 +95,7 @@ export const SkeletonMovieDetails = () => {
             }}
           >
             <Skeleton
-              variant='rounded'
+              variant={'rounded'}
               sx={{
                 width: { xs: '100%', md: 300 },
                 height: 22,
@@ -103,13 +103,13 @@ export const SkeletonMovieDetails = () => {
               }}
             />
             <Skeleton
-              variant='rounded'
+              variant={'rounded'}
               width={32}
               height={22}
               sx={{ width: 32, height: 22, marginBottom: '8px' }}
             />
             <Skeleton
-              variant='rounded'
+              variant={'rounded'}
               sx={{ width: { xs: '100%', md: 450 }, height: 90 }}
             />
           </Box>
@@ -121,9 +121,9 @@ export const SkeletonMovieDetails = () => {
                 gap: '4px',
               }}
             >
-              <Skeleton variant='rounded' height={18} width={147} />
-              <Skeleton variant='rounded' height={24} width={240} />
-              <Skeleton variant='rounded' height={19} width={240} />
+              <Skeleton variant={'rounded'} height={18} width={147} />
+              <Skeleton variant={'rounded'} height={24} width={240} />
+              <Skeleton variant={'rounded'} height={19} width={240} />
             </Box>
           ) : null}
         </Box>
@@ -143,7 +143,7 @@ export const SkeletonMovieDetails = () => {
         {Array.from(new Array(3)).map((_, index) => (
           <Skeleton
             key={index}
-            variant='rectangular'
+            variant={'rectangular'}
             width={100}
             height={100}
           />
