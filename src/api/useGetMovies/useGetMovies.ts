@@ -8,8 +8,9 @@ const fetchMovies = async ({
   genre = '',
   sortBy = 'popularity.desc',
 }: FetchMoviesParams) => {
+  const genresString = Array.isArray(genre) ? genre.join(',') : genre;
   const { data } = await axios.get<MoviesResponse>(
-    `${BASE_URL}discover/movie?api_key=${API_KEY}&language=pl-PL&sort_by=${sortBy}&page=${pageParam}&with_genres=${genre}`
+    `${BASE_URL}discover/movie?api_key=${API_KEY}&language=pl-PL&sort_by=${sortBy}&page=${pageParam}&with_genres=${genresString}`
   );
   return {
     results: data.results,
@@ -20,7 +21,7 @@ const fetchMovies = async ({
 export const useGetMovies = ({
   genre = '',
   sortBy = 'popularity.desc',
-} = {}) => {
+}: { genre?: string | string[]; sortBy?: string } = {}) => {
   return useInfiniteQuery({
     queryKey: ['movies', genre, sortBy],
     queryFn: ({ pageParam }) => fetchMovies({ pageParam, genre, sortBy }),

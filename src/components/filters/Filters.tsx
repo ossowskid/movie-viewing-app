@@ -1,101 +1,170 @@
-import { useCallback } from 'react';
+import { ChangeEvent, useCallback, useState } from 'react';
 import {
   Box,
-  Select,
-  MenuItem,
   FormControl,
-  InputLabel,
-  SelectChangeEvent,
   Button,
+  FormGroup,
+  Typography,
+  FormControlLabel,
+  Checkbox,
+  RadioGroup,
+  Radio,
 } from '@mui/material';
 import { sortOptions } from './sortOptions';
 import { useGetGenresContext } from '../../context/useGetGenresContext/useGetGenresContext';
+import AnimateHeight from 'react-animate-height';
+import { SkeletonFilters } from './skeletonFilters/SkeletonFilters';
 
 export const Filters = () => {
-  const { genres, category, sortBy, setCategory, setSortBy } =
-    useGetGenresContext();
+  const [isOpened, setIsOpened] = useState(false);
 
-  const handleCategoryChange = useCallback(
-    (e: SelectChangeEvent<string>) => {
-      const newCategory = e.target.value as string;
-      setCategory(newCategory);
-    },
-    [sortBy]
-  );
+  const {
+    genresData,
+    selectedGenres,
+    sortBy,
+    setSelectedGenres,
+    setSortBy,
+    isLoading,
+  } = useGetGenresContext();
 
   const handleSortChange = useCallback(
-    (e: SelectChangeEvent<string>) => {
-      const newSortBy = e.target.value as string;
+    (event: ChangeEvent<HTMLInputElement>) => {
+      const newSortBy = event.target.value;
       setSortBy(newSortBy);
     },
-    [category]
+    [setSortBy]
+  );
+
+  const handleGenreChange = useCallback(
+    (genreId: string, isChecked: boolean) => {
+      const currentGenres = Array.isArray(selectedGenres) ? selectedGenres : [];
+      const updatedGenres = isChecked
+        ? [...currentGenres, genreId]
+        : currentGenres.filter((id) => id !== genreId);
+      setSelectedGenres(updatedGenres);
+    },
+    [selectedGenres, setSelectedGenres]
   );
 
   const handleResetFilters = useCallback(() => {
-    setCategory('');
+    setSelectedGenres([]);
     setSortBy('');
-  }, [setCategory, setSortBy]);
+  }, [setSelectedGenres, setSortBy]);
 
-  if (!genres) {
-    return null;
+  if (isLoading) {
+    return <SkeletonFilters />;
   }
 
-  const categories = genres.map((genre) => genre.name);
+  if (!genresData) {
+    return null;
+  }
 
   return (
     <Box
       sx={{
         display: 'flex',
         flexDirection: 'column',
-        gap: 2,
         padding: '32px 24px',
         background: '#aab9cf',
+        alignItems: 'center',
       }}
     >
-      <FormControl fullWidth>
-        <InputLabel>Kategoria</InputLabel>
-        <Select
-          sx={{ width: '400px' }}
-          value={category}
-          label='Kategoria'
-          onChange={handleCategoryChange}
-        >
-          <MenuItem value=''>
-            <em>Wszystkie</em>
-          </MenuItem>
-          {categories.map((category) => (
-            <MenuItem key={category} value={category}>
-              {category}
-            </MenuItem>
-          ))}
-        </Select>
-      </FormControl>
-
-      <FormControl fullWidth>
-        <InputLabel>Sortuj według</InputLabel>
-        <Select
-          sx={{ width: '400px' }}
-          value={sortBy}
-          label='Sortuj według'
-          onChange={handleSortChange}
-        >
-          <MenuItem value=''>
-            <em>Domyślne</em>
-          </MenuItem>
-          {sortOptions.map((option) => (
-            <MenuItem key={option.value} value={option.value}>
-              {option.label}
-            </MenuItem>
-          ))}
-        </Select>
-      </FormControl>
+      <AnimateHeight duration={500} height={isOpened ? 'auto' : 0}>
+        <Box>
+          <Box
+            sx={{
+              display: 'flex',
+              flexDirection: { xs: 'column', md: 'row' },
+              gap: 2,
+            }}
+          >
+            <FormControl fullWidth>
+              <Typography
+                variant={'subtitle2'}
+                gutterBottom
+                sx={{ fontWeight: 600 }}
+              >
+                Kategorie
+              </Typography>
+              <FormGroup row>
+                {genresData.map(({ id, name }) => (
+                  <FormControlLabel
+                    sx={{ width: 146 }}
+                    key={id}
+                    control={
+                      <Checkbox
+                        checked={
+                          Array.isArray(selectedGenres) &&
+                          selectedGenres.includes(String(id))
+                        }
+                        onChange={(e) =>
+                          handleGenreChange(String(id), e.target.checked)
+                        }
+                        name={String(id)}
+                      />
+                    }
+                    label={name}
+                  />
+                ))}
+              </FormGroup>
+            </FormControl>
+            <FormControl fullWidth>
+              <Typography
+                variant={'subtitle2'}
+                gutterBottom
+                sx={{ fontWeight: 600 }}
+              >
+                Sortuj według
+              </Typography>
+              <RadioGroup row value={sortBy} onChange={handleSortChange}>
+                <FormControlLabel
+                  sx={{ width: 213 }}
+                  value={''}
+                  control={<Radio />}
+                  label={'Domyślne'}
+                />
+                {sortOptions.map((option) => (
+                  <FormControlLabel
+                    sx={{ width: 213 }}
+                    key={option.value}
+                    value={option.value}
+                    control={<Radio />}
+                    label={option.label}
+                  />
+                ))}
+              </RadioGroup>
+            </FormControl>
+          </Box>
+          <Button
+            onClick={handleResetFilters}
+            sx={{
+              borderRadius: '4px',
+              padding: '8px 16px;',
+              background: '#8693ab',
+              color: '#212227',
+              marginTop: 2,
+              '&:hover': {
+                background: '#637074',
+              },
+            }}
+          >
+            Resetuj filtry
+          </Button>
+        </Box>
+      </AnimateHeight>
       <Button
-        variant='outlined'
-        color='primary'
-        onClick={handleResetFilters}
-        sx={{ mt: 2, width: 'fit-content' }}
+        sx={{
+          borderRadius: '4px',
+          padding: '8px 32px;',
+          background: '#8693ab',
+          color: '#212227',
+          '&:hover': {
+            background: '#637074',
+          },
+        }}
+        onClick={() => setIsOpened((prev) => !prev)}
       >
-        Resetuj filtry
+        {!isOpened ? 'Pokaż filtry' : 'Ukryj filtry'}
       </Button>
     </Box>
   );

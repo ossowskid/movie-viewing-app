@@ -2,12 +2,12 @@ import { ReactNode } from 'react';
 import { Genre } from '../../api/useGetGenres/useGetGenres.types';
 
 export type GenresContextProps = {
-  genres: Genre[] | undefined;
+  genresData: Genre[] | undefined;
   isLoading: boolean;
   error: unknown;
-  category: string;
+  selectedGenres: string[];
   sortBy: string;
-  setCategory: (value: string) => void;
+  setSelectedGenres: (value: string[]) => void;
   setSortBy: (value: string) => void;
 };
 

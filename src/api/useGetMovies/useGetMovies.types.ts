@@ -24,6 +24,6 @@ export type MoviesResponse = {
 
 export type FetchMoviesParams = {
   pageParam?: number;
-  genre?: string;
+  genre?: string | string[];
   sortBy?: string;
 };
