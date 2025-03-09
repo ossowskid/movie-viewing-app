@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
-import { CircularProgress, ThemeProvider } from '@mui/material';
+import { Box, CircularProgress, ThemeProvider } from '@mui/material';
 import { AppRoute } from './routes/AppRoute';
 import { QueryClientProvider } from '@tanstack/react-query';
 import { queryClient } from './utils/queryClient';
@@ -16,7 +16,21 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <BrowserRouter>
-        <Suspense fallback={<CircularProgress />}>
+        <Suspense
+          fallback={
+            <Box
+              sx={{
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                height: '100vh',
+                backgroundColor: 'background.default',
+              }}
+            >
+              <CircularProgress />
+            </Box>
+          }
+        >
           <QueryClientProvider client={queryClient}>
             <GenresProvider>
               <Routes>
