@@ -5,16 +5,16 @@ import { GenresContextProps, GenresProviderProps } from './types';
 
 export const GenresProvider = ({ children }: GenresProviderProps) => {
   const { data: genresData, isLoading, error } = useGetGenres();
-  const [category, setCategory] = useState<string>('');
+  const [selectedGenres, setSelectedGenres] = useState<string[]>([]);
   const [sortBy, setSortBy] = useState<string>('');
 
   const value: GenresContextProps = {
-    genres: genresData?.genres,
+    genresData: genresData?.genres,
     isLoading,
     error,
-    category,
+    selectedGenres,
     sortBy,
-    setCategory,
+    setSelectedGenres,
     setSortBy,
   };
 
