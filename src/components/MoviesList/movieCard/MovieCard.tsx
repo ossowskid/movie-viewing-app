@@ -6,6 +6,7 @@ import { SkeletonMovieCard } from '../skeletonMovieCard/SkeletonMovieCard';
 import { useNavigate } from 'react-router-dom';
 import { AppRoute } from '../../../routes/AppRoute';
 import { useState } from 'react';
+import StarRateIcon from '@mui/icons-material/StarRate';
 
 export const MovieCard = ({
   posterPath,
@@ -89,9 +90,19 @@ export const MovieCard = ({
           },
         }}
       >
-        <span>Ocena: {voteAverage}</span>
+        <Box
+          sx={{
+            display: 'flex',
+            flexFlow: 'row',
+            alignItems: 'center',
+            gap: '4px',
+          }}
+        >
+          <StarRateIcon sx={{ color: '#D4AF37' }} />
+          {Number(voteAverage).toFixed(2)}
+        </Box>
         <span>Ilość głosów: {voteCount}</span>
-        <span>Premiera: {formattedDate}</span>{' '}
+        <span>Premiera: {formattedDate}</span>
       </CardContent>
     </Card>
   );
