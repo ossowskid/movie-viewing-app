@@ -37,7 +37,7 @@ export const MovieCard = ({
         position: 'relative',
         width: 200,
         height: 370,
-        backgroundColor: '#8693ab',
+        backgroundColor: 'background.section',
         transition: '0.4s',
         '&:hover': {
           cursor: 'pointer',
@@ -67,7 +67,7 @@ export const MovieCard = ({
         >
           <Box
             sx={{
-              color: '#fff',
+              color: 'text.primary',
               fontSize: '20px',
               fontWeight: 'bold',
               textAlign: 'center',
@@ -84,7 +84,7 @@ export const MovieCard = ({
           flexFlow: 'column',
           padding: '8px',
           paddingBottom: 0,
-          color: '#212227',
+          color: 'text.primary',
           '&:last-child': {
             paddingBottom: '8px',
           },
@@ -98,7 +98,7 @@ export const MovieCard = ({
             gap: '4px',
           }}
         >
-          <StarRateIcon sx={{ color: '#D4AF37' }} />
+          <StarRateIcon sx={{ color: 'secondary.main' }} />
           {Number(voteAverage).toFixed(2)}
         </Box>
         <span>Ilość głosów: {voteCount}</span>

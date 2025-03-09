@@ -23,7 +23,7 @@ export const MoviesList = () => {
         display: 'flex',
         flexFlow: 'column',
         alignItems: 'center',
-        background: '#aab9cf',
+        background: 'background.section',
         padding: '32px 0 32px;',
         gap: '22px',
       }}
@@ -60,11 +60,9 @@ export const MoviesList = () => {
             borderRadius: '4px',
             height: 50,
             padding: 0,
-            background: '#8693ab',
-            color: '#212227',
-            '&:hover': {
-              background: '#637074',
-            },
+            backgroundColor: 'primary.main',
+            color: 'text.primary',
+            '&:hover': { backgroundColor: 'primary.dark' },
           }}
           onClick={() => fetchNextPage()}
           disabled={isFetchingNextPage}

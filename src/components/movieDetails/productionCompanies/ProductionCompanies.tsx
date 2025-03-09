@@ -20,7 +20,7 @@ export const ProductionCompanies = ({
         flexFlow: 'row wrap',
         justifyContent: 'center',
         gap: '20px',
-        background: '#aab9cf',
+        backgroundColor: 'background.paper',
         borderRadius: '4px',
         alignItems: 'center',
         padding: '32px 16px',
@@ -30,7 +30,11 @@ export const ProductionCompanies = ({
         .filter(({ logo_path }) => logo_path && !brokenImages.has(logo_path))
         .map(({ logo_path }) => (
           <Box
-            sx={{ display: 'flex', flexFlow: 'column', maxWidth: 160 }}
+            sx={{
+              display: 'flex',
+              flexFlow: 'column',
+              maxWidth: 160,
+            }}
             key={logo_path}
           >
             <Image

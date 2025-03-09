@@ -65,7 +65,7 @@ export const Filters = () => {
         display: 'flex',
         flexDirection: 'column',
         padding: '32px 24px',
-        background: '#aab9cf',
+        background: 'background.paper',
         alignItems: 'center',
       }}
     >
@@ -80,19 +80,26 @@ export const Filters = () => {
           >
             <FormControl fullWidth>
               <Typography
-                variant={'subtitle2'}
+                variant='subtitle2'
                 gutterBottom
-                sx={{ fontWeight: 600 }}
+                sx={{ color: 'text.primary', fontWeight: 600 }}
               >
                 Kategorie
               </Typography>
               <FormGroup row>
                 {genresData.map(({ id, name }) => (
                   <FormControlLabel
-                    sx={{ width: 146 }}
+                    sx={{
+                      width: 146,
+                      color: 'text.secondary',
+                    }}
                     key={id}
                     control={
                       <Checkbox
+                        sx={{
+                          color: 'text.secondary',
+                          '&.Mui-checked': { color: 'secondary.main' },
+                        }}
                         checked={
                           Array.isArray(selectedGenres) &&
                           selectedGenres.includes(String(id))
@@ -112,23 +119,37 @@ export const Filters = () => {
               <Typography
                 variant={'subtitle2'}
                 gutterBottom
-                sx={{ fontWeight: 600 }}
+                sx={{ fontWeight: 600, color: 'text.primary' }}
               >
                 Sortuj według
               </Typography>
               <RadioGroup row value={sortBy} onChange={handleSortChange}>
                 <FormControlLabel
-                  sx={{ width: 213 }}
+                  sx={{ width: 213, color: 'text.secondary' }}
                   value={''}
-                  control={<Radio />}
+                  control={
+                    <Radio
+                      sx={{
+                        color: 'text.secondary',
+                        '&.Mui-checked': { color: 'secondary.main' },
+                      }}
+                    />
+                  }
                   label={'Domyślne'}
                 />
                 {sortOptions.map(({ value, label }) => (
                   <FormControlLabel
-                    sx={{ width: 213 }}
+                    sx={{ width: 213, color: 'text.secondary' }}
                     key={value}
                     value={value}
-                    control={<Radio />}
+                    control={
+                      <Radio
+                        sx={{
+                          color: 'text.secondary',
+                          '&.Mui-checked': { color: 'secondary.main' },
+                        }}
+                      />
+                    }
                     label={label}
                   />
                 ))}
@@ -138,14 +159,12 @@ export const Filters = () => {
           <Button
             onClick={handleResetFilters}
             sx={{
+              mt: 2,
               borderRadius: '4px',
               padding: '8px 16px;',
-              background: '#8693ab',
-              color: '#212227',
-              marginTop: 2,
-              '&:hover': {
-                background: '#637074',
-              },
+              backgroundColor: 'primary.main',
+              color: 'text.primary',
+              '&:hover': { backgroundColor: 'primary.dark' },
             }}
           >
             Resetuj filtry
@@ -156,10 +175,10 @@ export const Filters = () => {
         sx={{
           borderRadius: '4px',
           padding: '8px 32px;',
-          background: '#8693ab',
-          color: '#212227',
+          backgroundColor: 'primary.main',
+          color: 'text.primary',
           '&:hover': {
-            background: '#637074',
+            backgroundColor: 'primary.dark',
           },
         }}
         onClick={() => setIsOpened((prev) => !prev)}

@@ -20,7 +20,7 @@ export const SkeletonMovieDetails = () => {
           display: 'flex',
           flexFlow: { xs: 'column', sm: 'row' },
           gap: '20px',
-          bgcolor: '#aab9cf',
+          backgroundColor: 'background.paper',
           borderRadius: '4px',
           p: { xs: 2, md: '32px 16px' },
         }}
@@ -135,7 +135,7 @@ export const SkeletonMovieDetails = () => {
           gap: '20px',
           justifyContent: 'center',
           alignItems: 'center',
-          bgcolor: '#aab9cf',
+          backgroundColor: 'background.paper',
           borderRadius: '4px',
           p: '32px 16px',
         }}

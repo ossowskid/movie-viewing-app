@@ -44,7 +44,7 @@ const MovieDetailsRaw = () => {
   return (
     <Container sx={{ display: 'flex', flexFlow: 'column', gap: '20px' }}>
       <Button
-        variant='outlined'
+        variant='contained'
         startIcon={<ArrowBackIcon />}
         onClick={() => navigate(AppRoute.Home)}
         sx={{
@@ -53,11 +53,10 @@ const MovieDetailsRaw = () => {
           textTransform: 'none',
           padding: '8px 16px',
           width: 'fit-content',
-          color: '#212227',
-          backgroundColor: '#8693ab',
-          border: 'none',
+          backgroundColor: 'primary.main',
+          color: 'text.primary',
           '&:hover': {
-            backgroundColor: '#637074',
+            backgroundColor: 'primary.dark',
           },
         }}
       >
@@ -69,7 +68,7 @@ const MovieDetailsRaw = () => {
           flexFlow: { xs: 'column', sm: 'row' },
           justifyContent: { xs: 'center', md: 'flex-start' },
           gap: '20px',
-          background: '#aab9cf',
+          backgroundColor: 'background.paper',
           padding: '32px 16px',
           borderRadius: '4px',
           alignItems: { xs: 'center', sm: 'flex-start' },
