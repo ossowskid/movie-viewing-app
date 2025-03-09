@@ -36,7 +36,7 @@ export const MovieCard = ({
       sx={{
         position: 'relative',
         width: 200,
-        height: 370,
+        height: 378,
         backgroundColor: 'background.section',
         transition: '0.4s',
         '&:hover': {
