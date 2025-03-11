@@ -23,7 +23,7 @@ Klucz API TMDb: Zarejestruj się na TMDb
 Sklonuj repozytorium:
 
 ```js
-git clone https://github.com/yourusername/movies-explorer.git
+git clone https://github.com/ossowskid/movies-explorer.git
 cd movies-explorer
 ```
 
@@ -48,7 +48,7 @@ npm start
 ```js
 yarn start
 ```
-Otwórz w przeglądarce: http://localhost:3000.
+Otwórz w przeglądarce: http://localhost:5173.
 
 🎮 Użycie
 Strona główna:
