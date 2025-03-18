@@ -1,6 +1,6 @@
 import { Box, Skeleton } from '@mui/material';
 
-export const SkeletonFilters = () => {
+export const FiltersSkeleton = () => {
   return (
     <Box
       sx={{

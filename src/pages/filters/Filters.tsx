@@ -13,7 +13,7 @@ import {
 import { sortOptions } from './sortOptions';
 import { useGetGenresContext } from '../../context/useGetGenresContext/useGetGenresContext';
 import AnimateHeight from 'react-animate-height';
-import { SkeletonFilters } from './skeletonFilters/SkeletonFilters';
+import { FiltersSkeleton } from './filtersSkeleton/FiltersSkeleton';
 
 export const Filters = () => {
   const [isOpened, setIsOpened] = useState(false);
@@ -52,7 +52,7 @@ export const Filters = () => {
   }, [setSelectedGenres, setSortBy]);
 
   if (isLoading) {
-    return <SkeletonFilters />;
+    return <FiltersSkeleton />;
   }
 
   if (!genresData) {

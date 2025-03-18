@@ -2,7 +2,7 @@ import { Box, Card, CardContent, CardMedia } from '@mui/material';
 import { MovieCardProps } from './MovieCard.types';
 import { IMAGE_API_URL } from '../../../../api';
 import useFormattedDate from '../../../hooks/useFormatDate';
-import { SkeletonMovieCard } from '../skeletonMovieCard/SkeletonMovieCard';
+import { MovieCardSkeleton } from '../movieCardSkeleton/MovieCardSkeleton';
 import { useNavigate } from 'react-router-dom';
 import { AppRoute } from '../../../routes/AppRoute';
 import { useState } from 'react';
@@ -22,7 +22,7 @@ export const MovieCard = ({
   const formattedDate = useFormattedDate(releaseDate);
 
   if (isLoading || isFetchingNextPage) {
-    return <SkeletonMovieCard />;
+    return <MovieCardSkeleton />;
   }
 
   return (
