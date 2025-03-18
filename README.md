@@ -23,8 +23,8 @@ Klucz API TMDb: Zarejestruj się na TMDb
 Sklonuj repozytorium:
 
 ```js
-git clone https://github.com/ossowskid/movies-explorer.git
-cd movies-explorer
+git clone https://github.com/ossowskid/movie-viewing-app.git
+cd movie-viewing-app
 ```
 
 Zainstaluj zależności:
