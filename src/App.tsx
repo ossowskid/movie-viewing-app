@@ -7,10 +7,8 @@ import { queryClient } from './utils/queryClient';
 import { GenresProvider } from './context/useGetGenresContext/GenresProvider';
 import theme from './theme';
 
-const MoviesPage = lazy(() => import('./components/moviesPage/MoviesPage'));
-const MovieDetails = lazy(
-  () => import('./components/movieDetails/MovieDetails')
-);
+const MoviesPage = lazy(() => import('./pages/moviesPage/MoviesPage'));
+const MovieDetails = lazy(() => import('./pages/movieDetails/MovieDetails'));
 
 function App() {
   return (
