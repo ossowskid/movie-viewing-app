@@ -7,7 +7,7 @@ import { Box, Button, Container, useMediaQuery, useTheme } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { AppRoute } from '../../routes/AppRoute';
 import { ProductionCompanies } from './productionCompanies/ProductionCompanies';
-import { SkeletonMovieDetails } from './skeletonMovieDetails/SkeletonMovieDetails';
+import { MovieDetailsSkeleton } from './movieDetailsSkeleton/MovieDetailsSkeleton';
 import { QueryClientProvider } from '@tanstack/react-query';
 import { queryClient } from '../../utils/queryClient';
 import { AdditionalInformations } from './additionalInformations/AdditionalInformations';
@@ -20,7 +20,7 @@ const MovieDetailsRaw = () => {
   const isSmToMdScreen = useMediaQuery(theme.breakpoints.between('sm', 'md'));
 
   if (isLoading) {
-    return <SkeletonMovieDetails />;
+    return <MovieDetailsSkeleton />;
   }
 
   if (!data) {

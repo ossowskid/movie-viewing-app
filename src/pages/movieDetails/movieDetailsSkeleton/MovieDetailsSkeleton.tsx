@@ -6,7 +6,7 @@ import {
   useTheme,
 } from '@mui/material';
 
-export const SkeletonMovieDetails = () => {
+export const MovieDetailsSkeleton = () => {
   const theme = useTheme();
   const isMaxSmScreen = useMediaQuery(theme.breakpoints.down('sm'));
   const isMinMdScreen = useMediaQuery(theme.breakpoints.up('md'));
