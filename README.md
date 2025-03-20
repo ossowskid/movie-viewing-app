@@ -43,10 +43,10 @@ REACT_APP_IMAGE_API_URL=https://image.tmdb.org/t/p
 ```
 Uruchom aplikację:
 ```js
-npm start
+npm run dev
 ```
 ```js
-yarn start
+yarn run dev
 ```
 Otwórz w przeglądarce: http://localhost:5173.
 
