@@ -39,7 +39,6 @@ Skonfiguruj zmienne środowiskowe:
 Utwórz plik .env w głównym katalogu:
 ```js
 REACT_APP_TMDB_API_KEY=your_api_key_here
-REACT_APP_IMAGE_API_URL=https://image.tmdb.org/t/p
 ```
 Uruchom aplikację:
 ```js
