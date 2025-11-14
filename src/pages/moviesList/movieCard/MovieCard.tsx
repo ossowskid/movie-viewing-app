@@ -37,7 +37,6 @@ export const MovieCard = ({
         position: 'relative',
         width: 200,
         height: 378,
-        backgroundColor: 'background.section',
         transition: '0.4s',
         '&:hover': {
           cursor: 'pointer',
@@ -67,7 +66,7 @@ export const MovieCard = ({
         >
           <Box
             sx={{
-              color: 'text.primary',
+              color: 'text.secondary',
               fontSize: '20px',
               fontWeight: 'bold',
               textAlign: 'center',

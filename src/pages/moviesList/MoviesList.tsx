@@ -23,16 +23,17 @@ export const MoviesList = () => {
         display: 'flex',
         flexFlow: 'column',
         alignItems: 'center',
-        background: 'background.section',
+        backgroundColor: 'background.paper',
         padding: '32px 0 32px;',
         gap: '22px',
+        borderRadius: '4px',
       }}
     >
       <Box
         sx={{
           display: 'flex',
           flexFlow: 'row wrap',
-          gap: '22px',
+          gap: '14px',
           justifyContent: 'center',
         }}
       >
@@ -55,15 +56,8 @@ export const MoviesList = () => {
       </Box>
       {hasNextPage && (
         <Button
-          sx={{
-            width: 200,
-            borderRadius: '4px',
-            height: 50,
-            padding: 0,
-            backgroundColor: 'primary.main',
-            color: 'text.primary',
-            '&:hover': { backgroundColor: 'primary.dark' },
-          }}
+          color={'primary'}
+          variant={'contrastText'}
           onClick={() => fetchNextPage()}
           disabled={isFetchingNextPage}
         >

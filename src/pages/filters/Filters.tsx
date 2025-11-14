@@ -65,8 +65,9 @@ export const Filters = () => {
         display: 'flex',
         flexDirection: 'column',
         padding: '32px 24px',
-        background: 'background.paper',
+        backgroundColor: 'background.paper',
         alignItems: 'center',
+        borderRadius: '4px',
       }}
     >
       <AnimateHeight duration={500} height={isOpened ? 'auto' : 0}>
@@ -96,10 +97,6 @@ export const Filters = () => {
                     key={id}
                     control={
                       <Checkbox
-                        sx={{
-                          color: 'text.secondary',
-                          '&.Mui-checked': { color: 'secondary.main' },
-                        }}
                         checked={
                           Array.isArray(selectedGenres) &&
                           selectedGenres.includes(String(id))
@@ -127,14 +124,7 @@ export const Filters = () => {
                 <FormControlLabel
                   sx={{ width: 213, color: 'text.secondary' }}
                   value={''}
-                  control={
-                    <Radio
-                      sx={{
-                        color: 'text.secondary',
-                        '&.Mui-checked': { color: 'secondary.main' },
-                      }}
-                    />
-                  }
+                  control={<Radio />}
                   label={'Domyślne'}
                 />
                 {sortOptions.map(({ value, label }) => (
@@ -142,47 +132,19 @@ export const Filters = () => {
                     sx={{ width: 213, color: 'text.secondary' }}
                     key={value}
                     value={value}
-                    control={
-                      <Radio
-                        sx={{
-                          color: 'text.secondary',
-                          '&.Mui-checked': { color: 'secondary.main' },
-                        }}
-                      />
-                    }
+                    control={<Radio />}
                     label={label}
                   />
                 ))}
               </RadioGroup>
             </FormControl>
           </Box>
-          <Button
-            onClick={handleResetFilters}
-            sx={{
-              mt: 2,
-              borderRadius: '4px',
-              padding: '8px 16px;',
-              backgroundColor: 'primary.main',
-              color: 'text.primary',
-              '&:hover': { backgroundColor: 'primary.dark' },
-            }}
-          >
+          <Button onClick={handleResetFilters} color={'primary'}>
             Resetuj filtry
           </Button>
         </Box>
       </AnimateHeight>
-      <Button
-        sx={{
-          borderRadius: '4px',
-          padding: '8px 32px;',
-          backgroundColor: 'primary.main',
-          color: 'text.primary',
-          '&:hover': {
-            backgroundColor: 'primary.dark',
-          },
-        }}
-        onClick={() => setIsOpened((prev) => !prev)}
-      >
+      <Button color={'primary'} onClick={() => setIsOpened((prev) => !prev)}>
         {!isOpened ? 'Pokaż filtry' : 'Ukryj filtry'}
       </Button>
     </Box>

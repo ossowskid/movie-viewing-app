@@ -44,21 +44,10 @@ const MovieDetailsRaw = () => {
   return (
     <Container sx={{ display: 'flex', flexFlow: 'column', gap: '20px' }}>
       <Button
-        variant={'outlined'}
+        variant={'contained'}
+        className={'MuiButton-back'}
         startIcon={<ArrowBackIcon />}
         onClick={() => navigate(AppRoute.Home)}
-        sx={{
-          borderRadius: '4px',
-          fontWeight: 'bold',
-          textTransform: 'none',
-          padding: '8px 16px',
-          width: 'fit-content',
-          backgroundColor: 'primary.main',
-          color: 'text.primary',
-          '&:hover': {
-            backgroundColor: 'primary.dark',
-          },
-        }}
       >
         Powrót do listy
       </Button>

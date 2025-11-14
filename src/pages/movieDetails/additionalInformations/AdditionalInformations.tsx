@@ -35,19 +35,7 @@ export const AdditionalInformations = ({
           target={'_blank'}
           rel={'noopener noreferrer'}
           variant={'contained'}
-          sx={{
-            fontSize: '14px',
-            fontWeight: 'bold',
-            borderRadius: '4px',
-            padding: '8px 16px',
-            transition: '0.3s',
-            backgroundColor: 'info.main',
-            color: 'text.primary',
-            '&:hover': {
-              backgroundColor: 'info.dark',
-              transform: 'scale(1.05)',
-            },
-          }}
+          color={'secondary'}
         >
           Obejrzyj teraz!
         </Button>
